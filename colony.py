@@ -1,4 +1,5 @@
 import os
+import sys
 import logging
 import random
 import time
@@ -15,20 +16,20 @@ HEIGHT = 64
 BORDER = 2
 SOME_FONT_FILE = '/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf'
 MAX_GEN_COUNT = 10000
-SEED = 3
+SEED = 10
 i2c = board.I2C()
 time.sleep(0.1)
 
 
 class Colony:
-    def __init__(self):
+    def __init__(self, seed):
         self.colony = []
         self.row_count = 32
         self.column_count = 64
         for idx in range(0, self.row_count):
             currentRow = []
             for jdx in range(0, self.column_count):
-                coin = int(random.random() * 100) % SEED
+                coin = int(random.random() * 100) % seed
                 if (coin == 0):
                     currentRow.append(True)
                 else:
@@ -151,16 +152,29 @@ class Colony:
 
 
 def main():
-    colony = Colony()
+    try:
+        seed = int(sys.argv[1])
+    except Exception as wtf:
+        logger.info(wtf)
+        seed = SEED
+    colony = Colony(seed)
     colony.draw_four(10, 10)
 
     generation = 0
     while (generation < MAX_GEN_COUNT):
         colony.displayColony()
         colony.createNextGeneration()
-        generation = generation + 1
+        generation += 1
+        logger.info('generation: %s', generation)
         time.sleep(0.3)
 
 
 if (__name__ == "__main__"):
+    logging.basicConfig(
+        level=logging.INFO,
+        stream=sys.stdout,
+        format='[%(levelname)s] %(asctime)s (%(module)s) %(message)s',
+        datefmt='%Y/%m/%d-%H:%M:%S'
+    )
+
     main()

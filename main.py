@@ -4,8 +4,8 @@ import time
 
 generationCount=10000
 
-rowCount = 0
-columnCount = 0
+rowCount = 32
+columnCount = 64
 generation = 0
 colony = []
 seed=2
@@ -28,17 +28,17 @@ def initializeColony():
     global columnCount
     global colony
 
-    if (len(sys.argv) != 4):
-        print("usage: life.py <row> <columnCount> <seed>")
-        sys.exit(1)
-
-    try:
-        rowCount=int(sys.argv[1])
-        columnCount=int(sys.argv[2])
-        seed=int(sys.argv[3])
-    except:
-        for m in sys.exc_info(): print(m)
-        sys.exit(1)
+    #if (len(sys.argv) != 4):
+    #    print("usage: life.py <row> <columnCount> <seed>")
+    #    sys.exit(1)
+    #
+    #try:
+    #    rowCount=int(sys.argv[1])
+    #    columnCount=int(sys.argv[2])
+    #    seed=int(sys.argv[3])
+    #except:
+    #    for m in sys.exc_info(): print(m)
+    #    sys.exit(1)
 
     for idx in range(0, rowCount):
         currentRow = []

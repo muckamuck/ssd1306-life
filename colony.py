@@ -1,13 +1,11 @@
 import os
 import logging
-import sys
 import random
 import time
 
 import board
 from PIL import Image
 from PIL import ImageDraw
-from PIL import ImageFont
 import adafruit_ssd1306
 
 logger = logging.getLogger(__name__)
@@ -17,7 +15,7 @@ HEIGHT = 64
 BORDER = 2
 SOME_FONT_FILE = '/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf'
 MAX_GEN_COUNT = 10000
-SEED = 2
+SEED = 3
 i2c = board.I2C()
 time.sleep(0.1)
 
@@ -85,17 +83,30 @@ class Colony:
         self.oled.show()
 
     def displayColony(self):
-        rowNum = 1
+        self.clear()
+        image = Image.new('1', (self.oled.width, self.oled.height))
+        draw = ImageDraw.Draw(image)
+
         rowNum = 0  # TODO: is the 0 right or the old 1?
         for row in self.colony:
+            y = 2 * rowNum
             for idx in range(0, self.column_count):
                 if (row[idx]):
-                    sys.stdout.write("#")
+                    # sys.stdout.write("#")
+                    x = 2 * idx
+                    draw.point((x, y), fill=255)
+                    draw.point((x, y+1), fill=255)
+                    draw.point((x+1, y), fill=255)
+                    draw.point((x+1, y+1), fill=255)
                 else:
-                    sys.stdout.write(" ")
+                    # sys.stdout.write(" ")
+                    pass
             if (rowNum < self.row_count):
                 rowNum = rowNum + 1
-                sys.stdout.write("\n")
+                # sys.stdout.write("\n")
+
+        self.oled.image(image)
+        self.oled.show()
 
     def createNextGeneration(self):
         nextColony = []
@@ -148,7 +159,7 @@ def main():
         colony.displayColony()
         colony.createNextGeneration()
         generation = generation + 1
-        time.sleep(0.9)
+        time.sleep(0.3)
 
 
 if (__name__ == "__main__"):

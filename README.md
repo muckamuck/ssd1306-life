@@ -26,5 +26,5 @@ pip install -Ur requirements.txt
 Run:
 
 ```
-python main.py
+python colony.py
 ```

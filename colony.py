@@ -15,7 +15,7 @@ WIDTH = 128
 HEIGHT = 64
 BORDER = 2
 SOME_FONT_FILE = '/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf'
-MAX_GEN_COUNT = 10000
+MAX_GEN_COUNT = 1000
 SEED = 10
 i2c = board.I2C()
 time.sleep(0.1)
@@ -108,6 +108,16 @@ class Colony:
 
         self.colony = next_colony
 
+    def draw_image(self):
+        self.clear()
+
+        target_image = Image.new('1', (self.oled.width, self.oled.height))
+        image = Image.open('me.jpg')
+        converted_image = image.convert('1')
+        target_image.paste(converted_image, (32, 0))
+        self.oled.image(target_image)
+        self.oled.show()
+
 
 def main():
     try:
@@ -124,6 +134,9 @@ def main():
         generation += 1
         logger.info('generation: %s', generation)
         time.sleep(0.3)
+
+    time.sleep(5)
+    colony.draw_image()
 
 
 if (__name__ == "__main__"):

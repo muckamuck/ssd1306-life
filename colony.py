@@ -111,63 +111,65 @@ class Colony:
 
     def start_pulsar(self):
         self.blank()
-        self.colony[2][4] = True
-        self.colony[2][5] = True
-        self.colony[2][6] = True
-        self.colony[2][10] = True
-        self.colony[2][11] = True
-        self.colony[2][12] = True
+        x = 24
+        y = 8
+        self.colony[y+2][x+4] = True
+        self.colony[y+2][x+5] = True
+        self.colony[y+2][x+6] = True
+        self.colony[y+2][x+10] = True
+        self.colony[y+2][x+11] = True
+        self.colony[y+2][x+12] = True
 
-        self.colony[4][2] = True
-        self.colony[4][7] = True
-        self.colony[4][9] = True
-        self.colony[4][14] = True
+        self.colony[y+4][x+2] = True
+        self.colony[y+4][x+7] = True
+        self.colony[y+4][x+9] = True
+        self.colony[y+4][x+14] = True
 
-        self.colony[5][2] = True
-        self.colony[5][7] = True
-        self.colony[5][9] = True
-        self.colony[5][14] = True
+        self.colony[y+5][x+2] = True
+        self.colony[y+5][x+7] = True
+        self.colony[y+5][x+9] = True
+        self.colony[y+5][x+14] = True
 
-        self.colony[6][2] = True
-        self.colony[6][7] = True
-        self.colony[6][9] = True
-        self.colony[6][14] = True
+        self.colony[y+6][x+2] = True
+        self.colony[y+6][x+7] = True
+        self.colony[y+6][x+9] = True
+        self.colony[y+6][x+14] = True
 
-        self.colony[7][4] = True
-        self.colony[7][5] = True
-        self.colony[7][6] = True
-        self.colony[7][10] = True
-        self.colony[7][11] = True
-        self.colony[7][12] = True
+        self.colony[y+7][x+4] = True
+        self.colony[y+7][x+5] = True
+        self.colony[y+7][x+6] = True
+        self.colony[y+7][x+10] = True
+        self.colony[y+7][x+11] = True
+        self.colony[y+7][x+12] = True
 
-        self.colony[9][4] = True
-        self.colony[9][5] = True
-        self.colony[9][6] = True
-        self.colony[9][10] = True
-        self.colony[9][11] = True
-        self.colony[9][12] = True
+        self.colony[y+9][x+4] = True
+        self.colony[y+9][x+5] = True
+        self.colony[y+9][x+6] = True
+        self.colony[y+9][x+10] = True
+        self.colony[y+9][x+11] = True
+        self.colony[y+9][x+12] = True
 
-        self.colony[10][2] = True
-        self.colony[10][7] = True
-        self.colony[10][9] = True
-        self.colony[10][14] = True
+        self.colony[y+10][x+2] = True
+        self.colony[y+10][x+7] = True
+        self.colony[y+10][x+9] = True
+        self.colony[y+10][x+14] = True
 
-        self.colony[11][2] = True
-        self.colony[11][7] = True
-        self.colony[11][9] = True
-        self.colony[11][14] = True
+        self.colony[y+11][x+2] = True
+        self.colony[y+11][x+7] = True
+        self.colony[y+11][x+9] = True
+        self.colony[y+11][x+14] = True
 
-        self.colony[12][2] = True
-        self.colony[12][7] = True
-        self.colony[12][9] = True
-        self.colony[12][14] = True
+        self.colony[y+12][x+2] = True
+        self.colony[y+12][x+7] = True
+        self.colony[y+12][x+9] = True
+        self.colony[y+12][x+14] = True
 
-        self.colony[14][4] = True
-        self.colony[14][5] = True
-        self.colony[14][6] = True
-        self.colony[14][10] = True
-        self.colony[14][11] = True
-        self.colony[14][12] = True
+        self.colony[y+14][x+4] = True
+        self.colony[y+14][x+5] = True
+        self.colony[y+14][x+6] = True
+        self.colony[y+14][x+10] = True
+        self.colony[y+14][x+11] = True
+        self.colony[y+14][x+12] = True
 
     def blank(self):
         for _ in range(0, self.row_count):

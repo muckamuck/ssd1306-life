@@ -16,7 +16,7 @@ HEIGHT = 64
 BORDER = 2
 SOME_FONT_FILE = '/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf'
 MAX_GEN_COUNT = 1000
-SEED = 10
+SEED = 5
 i2c = board.I2C()
 time.sleep(0.1)
 

@@ -16,7 +16,7 @@ BORDER = 2
 SOME_FONT_FILE = '/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf'
 MAX_GEN_COUNT = 1000
 SEED = 5
-GENERATION_TIME = 0.5
+GENERATION_TIME = 0.2
 i2c = board.I2C()
 time.sleep(0.1)
 
@@ -36,8 +36,8 @@ class Colony:
             # self.start_toad()
             # self.start_beacon()
             # self.start_glider()
-            # self.start_penta_decathlon()
-            self.start_pulsar()
+            self.start_penta_decathlon()
+            # self.start_pulsar()
 
         self.oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3C)
 
@@ -96,18 +96,20 @@ class Colony:
 
     def start_penta_decathlon(self):
         self.blank()
-        self.colony[4][5] = True
-        self.colony[5][5] = True
-        self.colony[6][4] = True
-        self.colony[6][6] = True
-        self.colony[7][5] = True
-        self.colony[8][5] = True
-        self.colony[9][5] = True
-        self.colony[10][5] = True
-        self.colony[11][4] = True
-        self.colony[11][6] = True
-        self.colony[12][5] = True
-        self.colony[13][5] = True
+        x = 32
+        y = 0
+        self.colony[y+4][x] = True
+        self.colony[y+5][x] = True
+        self.colony[y+6][x-1] = True
+        self.colony[y+6][x+1] = True
+        self.colony[y+7][x] = True
+        self.colony[y+8][x] = True
+        self.colony[y+9][x] = True
+        self.colony[y+10][x] = True
+        self.colony[y+11][x-1] = True
+        self.colony[y+11][x+1] = True
+        self.colony[y+12][x] = True
+        self.colony[y+13][x] = True
 
     def start_pulsar(self):
         self.blank()
@@ -183,7 +185,7 @@ class Colony:
         self.oled.show()
 
     def display_colony(self):
-        self.clear()
+        # self.clear()
         image = Image.new('1', (self.oled.width, self.oled.height))
         draw = ImageDraw.Draw(image)
 
@@ -200,6 +202,7 @@ class Colony:
             if (row_num < self.row_count):
                 row_num = row_num + 1
 
+        self.clear()
         self.oled.image(image)
         self.oled.show()
 

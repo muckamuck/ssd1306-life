@@ -14,7 +14,7 @@ WIDTH = 128
 HEIGHT = 64
 BORDER = 2
 SOME_FONT_FILE = '/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf'
-MAX_GEN_COUNT = 1000
+MAX_GEN_COUNT = 128
 SEED = 5
 GENERATION_TIME = 0.2
 i2c = board.I2C()
@@ -97,19 +97,19 @@ class Colony:
     def start_penta_decathlon(self):
         self.blank()
         x = 32
-        y = 0
+        y = 16
+        self.colony[y][x] = True
+        self.colony[y+1][x] = True
+        self.colony[y+2][x-1] = True
+        self.colony[y+2][x+1] = True
+        self.colony[y+3][x] = True
         self.colony[y+4][x] = True
         self.colony[y+5][x] = True
-        self.colony[y+6][x-1] = True
-        self.colony[y+6][x+1] = True
-        self.colony[y+7][x] = True
+        self.colony[y+6][x] = True
+        self.colony[y+7][x-1] = True
+        self.colony[y+7][x+1] = True
         self.colony[y+8][x] = True
         self.colony[y+9][x] = True
-        self.colony[y+10][x] = True
-        self.colony[y+11][x-1] = True
-        self.colony[y+11][x+1] = True
-        self.colony[y+12][x] = True
-        self.colony[y+13][x] = True
 
     def start_pulsar(self):
         self.blank()

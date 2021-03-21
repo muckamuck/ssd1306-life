@@ -14,7 +14,7 @@ WIDTH = 128
 HEIGHT = 64
 BORDER = 2
 SOME_FONT_FILE = '/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf'
-MAX_GEN_COUNT = 128
+MAX_GEN_COUNT = 1280
 SEED = 5
 GENERATION_TIME = 0.2
 i2c = board.I2C()
@@ -25,6 +25,8 @@ class Colony:
     def __init__(self, **kwargs):
         seed = kwargs.get('seed', None)
         pattern = kwargs.get('pattern', None)
+        logger.debug(seed)
+        logger.debug(pattern)
 
         self.colony = []
         self.row_count = 32
@@ -36,8 +38,9 @@ class Colony:
             # self.start_toad()
             # self.start_beacon()
             # self.start_glider()
-            self.start_penta_decathlon()
+            # self.start_penta_decathlon()
             # self.start_pulsar()
+            self.start_gun()
 
         self.oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3C)
 
@@ -172,6 +175,53 @@ class Colony:
         self.colony[y+14][x+10] = True
         self.colony[y+14][x+11] = True
         self.colony[y+14][x+12] = True
+
+    def start_gun(self):
+        self.blank()
+        self.colony[2][26] = True
+
+        self.colony[3][24] = True
+        self.colony[3][26] = True
+
+        self.colony[4][14] = True
+        self.colony[4][15] = True
+        self.colony[4][22] = True
+        self.colony[4][23] = True
+        self.colony[4][36] = True
+        self.colony[4][37] = True
+
+        self.colony[5][13] = True
+        self.colony[5][17] = True
+        self.colony[5][22] = True
+        self.colony[5][23] = True
+        self.colony[5][36] = True
+        self.colony[5][37] = True
+
+        self.colony[6][2] = True
+        self.colony[6][3] = True
+        self.colony[6][12] = True
+        self.colony[6][18] = True
+        self.colony[6][22] = True
+        self.colony[6][23] = True
+
+        self.colony[7][2] = True
+        self.colony[7][3] = True
+        self.colony[7][12] = True
+        self.colony[7][16] = True
+        self.colony[7][18] = True
+        self.colony[7][19] = True
+        self.colony[7][24] = True
+        self.colony[7][26] = True
+
+        self.colony[8][12] = True
+        self.colony[8][18] = True
+        self.colony[8][26] = True
+
+        self.colony[9][13] = True
+        self.colony[9][17] = True
+
+        self.colony[10][14] = True
+        self.colony[10][15] = True
 
     def blank(self):
         for _ in range(0, self.row_count):
